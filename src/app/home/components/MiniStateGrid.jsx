@@ -6,7 +6,7 @@ import statData from '@/data/state';
 
 const MiniStateGrid = () => {
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2  lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2  lg:grid-cols-3">
             {statData.map((item, index) => (
                 <MiniState
                     key={index}
