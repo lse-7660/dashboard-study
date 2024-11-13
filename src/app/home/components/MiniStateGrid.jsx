@@ -2,12 +2,12 @@ import React from 'react';
 import MiniState from './ministate';
 import { BsFillBarChartFill } from 'react-icons/bs';
 import { BiDollar } from 'react-icons/bi';
-import statData from '@/data/state';
+import stateData from '@/data/state';
 
 const MiniStateGrid = () => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2  lg:grid-cols-3">
-            {statData.map((item, index) => (
+            {stateData.map((item, index) => (
                 <MiniState
                     key={index}
                     {...item}
