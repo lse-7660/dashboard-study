@@ -4,7 +4,7 @@ import React from 'react';
 
 const HomeLayout = ({ children }) => {
     return (
-        <div id="wrap">
+        <div id="wrap" className="bg-slate-100 ">
             <Header />
             <main>{children}</main>
             <Footer />

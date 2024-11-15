@@ -37,6 +37,12 @@ const StatePage = () => {
 
     const [selected, setSelected] = useState(0);
 
+    // input state
+    const [text, setText] = useState('');
+    const handleChange = (e) => {
+        setText(e.target.value);
+    };
+
     return (
         <div className="m-10">
             {/* change name */}
@@ -95,6 +101,18 @@ const StatePage = () => {
                         ))}
                     </div>
                 </div>
+            </div>
+
+            {/* Input state */}
+            <div>
+                <input
+                    type="text"
+                    value={text}
+                    onChange={handleChange}
+                    placeholder="집에가고싶다는생각중"
+                    className=" px-4 py-2 border-1 rounded bg-slate-50"
+                />
+                <p>{text}</p>
             </div>
         </div>
     );

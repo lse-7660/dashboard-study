@@ -14,36 +14,32 @@ import { tableDataCheck } from '@/data/tableDataCheck';
 
 const HomePage = () => {
     return (
-        <div id="wrap" className="bg-slate-100 ">
-            <Header />
-            <main className="inner flex flex-col gap-12">
-                <MiniStateGrid />
-                <button
-                    className="bg-slate-800 text-white py-2 rounded hover:bg-primary"
-                    onClick={(event) => {
-                        console.log('응 못 가');
-                        console.log(event);
-                    }}
-                >
-                    집에 가고 싶을 때마다 누르는 버튼
-                </button>
-                <div className="flex flex-row gap-4">
-                    <Button> 하.....</Button>
-                    <Button gray>인생</Button>
-                </div>
+        <main className="inner flex flex-col gap-12">
+            <MiniStateGrid />
+            <button
+                className="bg-slate-800 text-white py-2 rounded hover:bg-primary"
+                onClick={(event) => {
+                    console.log('응 못 가');
+                    console.log(event);
+                }}
+            >
+                집에 가고 싶을 때마다 누르는 버튼
+            </button>
+            <div className="flex flex-row gap-4">
+                <Button> 하.....</Button>
+                <Button gray>인생</Button>
+            </div>
 
-                <div className="flex flex-col gap-4 lg:flex-row">
-                    <div className=" grow">
-                        <CheckTable tableDataCheck={tableDataCheck} />
-                    </div>
-                    <div className="flex flex-col gap-4 md:flex-row  grow">
-                        <div className="bg-secondary grow">g</div>
-                        <div className="bg-primary grow">g</div>
-                    </div>
+            <div className="flex flex-col gap-4 lg:flex-row">
+                <div className=" grow">
+                    <CheckTable tableDataCheck={tableDataCheck} />
                 </div>
-            </main>
-            <Footer />
-        </div>
+                <div className="flex flex-col gap-4 md:flex-row  grow">
+                    <div className="bg-secondary grow">g</div>
+                    <div className="bg-primary grow">g</div>
+                </div>
+            </div>
+        </main>
     );
 };
 

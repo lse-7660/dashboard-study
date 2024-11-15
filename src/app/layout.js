@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { BrowserRouter } from 'react-router-dom';
 
 // 이것은 전역 레이아웃이다
 // 모든 페이지에 적용되어야하는 레이아웃? 여따넣으면되
@@ -29,4 +30,3 @@ export default function RootLayout({ children }) {
         </html>
     );
 }
-
