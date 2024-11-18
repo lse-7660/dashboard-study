@@ -11,6 +11,7 @@ import IconBox from '@/components/icon/IconBox';
 import Button from '@/components/button/Button';
 import CheckTable from './components/CheckTable';
 import { tableDataCheck } from '@/data/tableDataCheck';
+import OrderCoffee from '../class/page';
 
 const HomePage = () => {
     return (
@@ -18,6 +19,9 @@ const HomePage = () => {
             <Header />
             <main className="inner flex flex-col gap-12">
                 <MiniStateGrid />
+
+                <OrderCoffee name="아메리카노" price={3000} />
+
                 <button
                     className="bg-slate-800 text-white py-2 rounded hover:bg-primary"
                     onClick={(event) => {
