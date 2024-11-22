@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 
 const NewsPage = () => {
     const [news, setNews] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     useEffect(() => {
         // fetch(
@@ -31,8 +33,15 @@ const NewsPage = () => {
                 const response = await axios.get(
                     'https://content.guardianapis.com/search?api-key=cb5c8f1d-41e3-4481-b13e-7b075cf3e537&show-fields=thumbnail,headline,byline,bodyText'
                 );
-                console.log(response.data);
-                setNews(response.data.response.results);
+                const results = response.data.response.results;
+                console.log(results);
+                setNews(results);
+
+                const categorySet = [
+                    // 카테고리명 수집(map), 중복 제거(Set)
+                    ...new Set(results.map((item) => item.sectionName)),
+                ];
+                setCategories(categorySet);
             } catch (error) {
                 console.error;
             }
@@ -43,11 +52,40 @@ const NewsPage = () => {
     // []안의 값은 어떤 것에 의존해 실행되는가
     // 근데 페이지 열자마자 실행될거잔어? 그럼 비워
     // 버튼 누르면 실행된다? 그럼 [버튼] 일케
+
+    // 카테고리 선택 시 뉴스 필터링
+    const filterdNews =
+        selectedCategory === ''
+            ? news
+            : news.filter((item) => {
+                  return item.sectionName === selectedCategory;
+              });
+
     return (
         <div className="py-12 bg-slate-50">
             <h2 className="px-10 py-5">NEWS</h2>
+            <div className="flex gap-5">
+                <button
+                    onClick={() => {
+                        setSelectedCategory('');
+                    }}
+                >
+                    All
+                </button>
+                {categories.map((item) => (
+                    <button
+                        onClick={() => {
+                            setSelectedCategory(item);
+                        }}
+                        key={item}
+                    >
+                        {item}
+                    </button>
+                ))}
+            </div>
+            {/* ------------------------뉴스 리스트--------------------------- */}
             <ul className="divide-y  ">
-                {news.map((item) => (
+                {filterdNews.map((item) => (
                     <li key={item.id} className="  py-3 px-2">
                         <Link href={item.webUrl} className="flex flex-row gap-5">
                             <Image
