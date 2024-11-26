@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { BrowserRouter } from 'react-router-dom';
 import { CounterProvider } from '@/contexts/CounterContext';
+import { BtnProvider } from '@/contexts/BtnContext';
 
 // 이것은 전역 레이아웃이다
 // 모든 페이지에 적용되어야하는 레이아웃? 여따넣으면되
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                <CounterProvider>{children}</CounterProvider>
+                <CounterProvider>
+                    <BtnProvider>{children}</BtnProvider>
+                </CounterProvider>
             </body>
         </html>
     );
